@@ -17,7 +17,7 @@ node {
                sh  " docker push mydocker1405/k8s-example:v1 "
      }
      stage (' deploy to k8s'){
-     sshagent(['kubernetes_pem']) {
+     sshagent(['kubernetes_Master_pemfile']) {
                sh " scp -o stricthostkeychecking=no k8s-job2-deployment.yaml ubuntu@44.203.67.219:/home/ubuntu"
                sh " scp -o stricthostkeychecking=no k8s-job2-service.yaml ubuntu@44.203.67.219:/home/ubuntu"        
                sh " ssh ubuntu@44.203.67.219  kubectl apply -f k8s-job2-deployment.yaml"
