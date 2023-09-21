@@ -18,9 +18,9 @@ node {
      }
      stage (' deploy to k8s'){
      sshagent(['kubernetes_pem']) {
-               sh " scp -o stricthostkeychecking=no docker-2_deployment.yaml ubuntu@44.203.67.219:/home/ubuntu"
+               sh " scp -o stricthostkeychecking=no k8s-job2-deployment.yaml ubuntu@44.203.67.219:/home/ubuntu"
                sh " scp -o stricthostkeychecking=no docker-2_service.yaml ubuntu@44.203.67.219:/home/ubuntu"        
-               sh " ssh ubuntu@44.203.67.219  kubectl apply -f docker-2_deployment.yaml"
+               sh " ssh ubuntu@44.203.67.219  kubectl apply -f k8s-job2-deployment.yaml"
                sh " ssh ubuntu@44.203.67.219  kubectl apply -f docker-2_service.yaml"
           }
        }
